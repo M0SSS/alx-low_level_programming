@@ -1,22 +1,33 @@
 #include "main.h"
 
 /**
- * _strchr - Locates a character in a string.
- * @s: The string to be searched.
- * @c: The character to be located.
+ * _strncpy - Copy a string
+ * @dest: The destination value
+ * @src: The source value
+ * @n: The copy limit
  *
- * Return: If c is found - a pointer to the first occurence.
- * If c is not found - NULL.
+ * Return: char value
  */
-char *_strchr(char *s, char c)
+char *_strncpy(char *dest, char *src, int n)
 {
-	int index;
+	int a = 0, b = 0;
 
-	for (index = 0; s[index] >= '\0'; index++)
+	while (sr[b])
 	{
-		if (s[index] == c)
-			return (s + index);
+		b++;
 	}
 
-	return ('\0');
+	while (a < n && src[a])
+	{
+		dest[a] = src[a];
+		a++;
+	}
+
+	while (a < n)
+	{
+		dest[a] = '\0';
+		a++;
+	}
+
+	return (dest);
 }
