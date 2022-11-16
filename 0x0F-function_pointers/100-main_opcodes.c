@@ -1,6 +1,6 @@
 /*
  * File: 100-main_opcodes.c
- * Auth: Musse Shiferaw 
+ * Auth: Musse Shiferaw
  */
 
 #include <stdio.h>
