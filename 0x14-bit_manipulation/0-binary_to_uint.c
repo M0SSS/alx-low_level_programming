@@ -1,78 +1,47 @@
+#include <stdlib.h>
+#include <stdio.h>
 #include "main.h"
 
 /**
- * _atoi - converts chars to integer
- *
- * @c: char to convert
- *
- * Return: converted integer
-*/
-unsigned int _atoi(char c)
-{
-	return ((unsigned int) c - '0');
-}
-
-/**
- * _strlen - gets the length of a string
- *
- * @str: string input
- *
- * Return: string length
-*/
-unsigned int _strlen(const char *str)
-{
-	unsigned int index = 0;
-
-	while (str[index] != '\0')
-		index++;
-	return (index);
-}
-
-/**
- * binary_to_uint - a function that converts a binary number
- *                  to an unsigned int
- *
- * @b: string that contains 0 and 1 characters
- *
- * Return: the number converted or 0
- *         if @b contains a character
- *         that is not 0 or 1 or when
- *         @b is null
-*/
+  * binary_to_uint - Converts a binary number to an unsigned int
+  * @b: The binary string to converts
+  *
+  * Return: The positive number converted from a binary
+  */
 unsigned int binary_to_uint(const char *b)
 {
-	int index;
-	unsigned int result = 0, base2 = 1,  num = 0;
+	unsigned int len = 0, count = 0, sum = 0;
 
-	/*if b is NULL return 0*/
 	if (b == NULL)
 		return (0);
 
-	#ifdef DEBUG /*print debug statement*/
-	printf("String is %s, and length is %u.\n", b, _strlen(b));
-	#endif
-
-	/*iterate through string*/
-	for (index = _strlen(b) - 1; index >= 0; index--)
+	len = _strlen(b);
+	while (len--)
 	{
-		num = _atoi(b[index]); /*convert char to number*/
-
-		#ifdef DEBUG /*print debug statements*/
-		printf("Number is %u, index is %i and base is %u.\n\n", num, index, base2);
-		#endif
-
-		/*if number is not 0 or 1 return 0*/
-		if (num != 0 && num != 1)
+		if (b[len] != 48 && b[len] != 49)
 			return (0);
 
-		result += num * base2; /*enable debug to see it in action*/
-		base2 *= 2;
+		if (b[len] == 49)
+			sum += 1 << count;
 
-		#ifdef DEBUG /*print debug statements*/
-		printf("Result is %u.\n", result);
-		#endif
+		count++;
 	}
 
-	return (result);
+	return (sum);
+}
 
+/**
+  * _strlen - Returns the length of a string
+  * @s: String to count
+  *
+  * Return: String length
+  */
+int _strlen(const char *s)
+{
+	int c = 0;
+
+	while (s[c])
+		c++;
+
+	return (c);
 }
